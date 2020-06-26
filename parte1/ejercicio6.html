@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Ejercicio 6</title>
+  <script>
+    function validarFormulario() {
+      var txtNombre = document.getElementById("nombre").value;
+      var txtEdad = document.getElementById("edad").value;
+      var txtCorreo = document.getElementById("correo").value;
+
+      var banderaRBTN = false;
+
+      //Test campo obligatorio
+      if (
+        txtNombre == null ||
+        txtNombre.length == 0 ||
+        /^\s+$/.test(txtNombre)
+      ) {
+        alert(
+          "El campo nombre no debe ir vacío o lleno de solamente espacios en blanco"
+        );
+        return false;
+      }
+
+      //Test edad
+      if (txtEdad == null || txtEdad.length == 0 || isNaN(txtEdad)) {
+        alert("Debe ingresar una edad");
+        return false;
+      }
+
+      //Test correo
+      if (!/\S+@\S+\.\S+/.test(txtCorreo)) {
+        alert("Debe escribir un correo válido");
+        return false;
+      }
+
+      alert('Datos correctos, Felicidades');
+      return true;
+    }
+  </script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-5">
+        <h3 class="mt-4">Validación de formulario</h3>
+        <br>
+        <form action="" onsubmit="return validarFormulario()">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Edad</label>
+            <input class="form-control" id="edad" name="edad" type="text">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input class="form-control" id="correo" name="correo" type="email">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Validar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

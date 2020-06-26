@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obtener datos de IP</title>
+</head>
+<body>
+  <h1>Buscador de datos de IP</h1>
+  <form onsubmit="onSubmit(event)">
+    <label for="ip">
+      <input required type="text" name="ip" id="ip" placeholder="Ingrese su IP">
+    </label>
+    <input type="submit" value="Buscar datos de IP">
+
+    <h5>Resultados en JSON:</h5>
+    <textarea name="results" id="results" cols="50" rows="25"></textarea>
+  </form>
+
+  <script>
+    // Obtener una API key en https://ipstack.com
+    const API_KEY = null
+    
+    const ipInput = document.getElementById("ip")
+    const resultsTextarea = document.getElementById("results")
+    function onSubmit(event) {
+      if(!API_KEY) {
+        alert('Debe configurar su API key de IPStack en el código fuente de esta página')
+      } else {
+        event.preventDefault()
+        const ip = ipInput.value
+
+        fetch(`http://api.ipstack.com/${ip}?access_key=${API_KEY}&format=1`)
+          .then(response => response.json())
+          .then(response => {
+            resultsTextarea.value = JSON.stringify(response)
+          })
+      }
+    }
+  </script>
+</body>
+</html>

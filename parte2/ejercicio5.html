@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Mi casa</h1>
+  <iframe
+  id="map"
+    width="600"
+    height="450"
+    frameborder="0" style="border:0"
+    src="" allowfullscreen>
+  </iframe>
+
+  <script>
+    const mapIframe = document.getElementById('map')
+
+    // Obtener una API key en https://console.cloud.google.com/
+    const API_KEY = null
+
+    if(!API_KEY) {
+      alert('Debe configurar su API key de Google Maps en el código fuente de esta página')
+    }
+
+    const mapUrl = `https://www.google.com/maps/embed/v1/view?key=${API_KEY}&center=-31.542673, -68.576117&zoom=18&maptype=satellite`
+    mapIframe.setAttribute('src', mapUrl)
+  </script>
+</body>
+</html>
